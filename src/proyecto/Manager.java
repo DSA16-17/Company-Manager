@@ -3,9 +3,6 @@ package proyecto;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by Turpitude on 29/09/2016.
- */
 public class Manager implements CompanyManager {
     HashMap<String, Department> departments;
     ArrayList<Employee> employees;

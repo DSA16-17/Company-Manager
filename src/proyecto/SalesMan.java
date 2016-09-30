@@ -1,8 +1,6 @@
 package proyecto;
 
-/**
- * Created by Turpitude on 26/09/2016.
- */
+
 public class SalesMan {
     public String DNI;
     public String name;

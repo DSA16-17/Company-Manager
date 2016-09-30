@@ -1,8 +1,5 @@
 package proyecto;
 
-/**
- * Created by Turpitude on 26/09/2016.
- */
 public class Employee{
     public String DNI;
     public String name;
