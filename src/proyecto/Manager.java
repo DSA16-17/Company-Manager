@@ -36,7 +36,11 @@ public class Manager implements CompanyManager {
 
     @Override
     public ArrayList<Department> Departmens() {
-        return null;
+        ArrayList<Department> Departmens=new ArrayList<Department>();
+        for(int i=0;i<Departmens.size();i++){
+            Departmens.add(departments.get(i));
+        }
+        return  Departmens;
     }
 
     @Override
@@ -50,7 +54,7 @@ public class Manager implements CompanyManager {
     }
 
     @Override
-    public void addSale(String name, int sale, double amount) {
+    public void addSale(String DNI, int sale, double amount) {
 
     }
 

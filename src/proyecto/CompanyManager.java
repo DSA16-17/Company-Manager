@@ -12,7 +12,7 @@ public interface CompanyManager {
     ArrayList<Department> Departmens();
     ArrayList<Employee> EmployerBySalary();
     ArrayList<Employee> EmployerByDepartment();
-    void addSale(String name,int sale,double amount);
+    void addSale(String DNI,int sale,double amount);
     double Salaries(String Department);
     double Salaries();
 
