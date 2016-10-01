@@ -9,9 +9,9 @@ public interface CompanyManager {
     void addEmployee(String DNI, String name,double salary,String Department);
     void addSalesMan(String DNI,String name, double salary,String Department);
     void addDirector(String DNI,String name, double salary,String Department);
-    ArrayList<Department> Departmens();
-    ArrayList<Employee> EmployerBySalary();
-    ArrayList<Employee> EmployerByDepartment();
+    ArrayList<Department> returnDepartments();
+    ArrayList<Employee> EmployeeBySalary();
+    ArrayList<Employee> EmployeeByDepartment(String name);
     void addSale(String DNI,int sale,double amount);
     double Salaries(String Department);
     double Salaries();
