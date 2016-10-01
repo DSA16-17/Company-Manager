@@ -2,7 +2,7 @@ package proyecto;
 
 import java.util.ArrayList;
 
-public class Employee{
+public class Employee {
     public String DNI;
     public String name;
     public double salary;
@@ -11,21 +11,22 @@ public class Employee{
     ArrayList<Sales> empsales;
 
 
-    public Employee(String DNI, String name, double salary,String department, int category) {
+    public Employee(String DNI, String name, double salary,int category, String department ) {
         this.DNI = DNI;
         this.name = name;
         this.salary = salary;
         this.category = category;
         this.department = department;
-        if (category == 1){
-           empsales = new ArrayList<Sales>();
+        if (category == 1) {
+            empsales = new ArrayList<Sales>();
         }
     }
-    public void addSale(Sales s){
-        empsales.add(s);
-    }
-    public double returnSalary(){
+
+    public double returnSalary() {
         return this.salary;
     }
 
+    public void addSale(Sales s) {
+        empsales.add(s);
+    }
 }
