@@ -46,29 +46,28 @@ public class Manager implements CompanyManager {
 
     @Override
     public ArrayList<Department> returnDepartments() {
-        ArrayList<Department> Departmens =new ArrayList<Department>();
-        for(int i=0;i<Departmens.size();i++){
-            Departmens.add(departments.get(i));
-        }
+        ArrayList<Department> Departmens =new ArrayList<Department>(departments.values());
         return  Departmens;
     }
 
     @Override
     public ArrayList<Employee> EmployeeBySalary() {
-        return null;
-
-
+    ArrayList<Department> dep= new ArrayList<>(departments.values());
+        ArrayList<Employee> emp=new ArrayList<>();
+        ArrayList<Employee> emp1;
+        for(int i=0;i<dep.size();i++){
+            emp1=dep.get(i).salaries();
+            emp.addAll(emp1);
+        }
+        return emp;
     }
 
     @Override
     public ArrayList<Employee> EmployeeByDepartment(String name) {
-        ArrayList<Employee> emp = new ArrayList<Employee>();
+        ArrayList<Employee> emp;
         Department dep = departments.get(name);
         emp = dep.employees;
         return emp;
-
-
-
 
     }
 
@@ -86,12 +85,30 @@ public class Manager implements CompanyManager {
     }
 
     @Override
-    public double Salaries(String Department) {
-        return 0;
+    public double Salaries(String Department){
+        Department dep=departments.get(Department);
+        ArrayList<Employee> emp=dep.salaries();
+        double sum=0;
+        for(int i=0;i<emp.size();i++){
+            sum=sum+emp.get(i).returnSalary();
+        }
+        return sum;
     }
 
     @Override
     public double Salaries() {
-        return 0;
+        ArrayList<Department> dep= new ArrayList<>(departments.values());
+        ArrayList<Employee> emp=new ArrayList<>();
+        ArrayList<Employee> emp1;
+        for(int i=0;i<dep.size();i++){
+            emp1=dep.get(i).salaries();
+            emp.addAll(emp1);
+        }
+        double sum=0;
+        for(int i=0;i<emp.size();i++){
+            sum=sum+emp.get(i).returnSalary();
+        }
+        return sum;
     }
-}
+    }
+
