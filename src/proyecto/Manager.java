@@ -42,27 +42,27 @@ public class Manager implements CompanyManager {
     }
 
     @Override
-    public ArrayList<Employee> EmployeeBySalary() { //Devuelve los empleados ordenados por salario
-        ArrayList<Department> dep= new ArrayList<>(departments.values());
-        ArrayList<Employee> emp=new ArrayList<>();
+    public List<Employee> employeeBySalary() { //Devuelve los empleados ordenados por salario
+        List<Department> dep= new ArrayList<>(departments.values());
+        List<Employee> emp=new ArrayList<>();
 
         for(int i=0;i<dep.size();i++){
-            ArrayList<Employee> emp1;
+            List<Employee> emp1;
             emp1=dep.get(i).salaries(); //Calcula el salario de cada persona del departamento y lo mete en una lista de empleados
             emp.addAll(emp1); //Mete la lista de empleados anterior en una lista mas grande donde estaran todos los empleados
         }
         Collections.sort(emp, new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
-                return new Double(o2.returnSalary()).compareTo(new Double(o1.returnSalary()));
+                return new Double(o2.getSalary()).compareTo(new Double(o1.getSalary()));
             }
         });
         return emp;
     }
 
     @Override
-    public ArrayList<Employee> EmployeeByDepartment(String name) { //Devuelve los empleados de un departamento
-        ArrayList<Employee> emp;
+    public List<Employee> employeeByDepartment(String name) { //Devuelve los empleados de un departamento
+        List<Employee> emp;
         Department dep = departments.get(name);
         emp = dep.employees;
         return emp;
@@ -83,30 +83,24 @@ public class Manager implements CompanyManager {
     }
 
     @Override
-    public double Salaries(String Department){ //Devuelve la suma de los salarios de un departamento
+    public double salaries(String Department){ //Devuelve la suma de los salarios de un departamento
         Department dep=departments.get(Department);
-        ArrayList<Employee> emp=dep.salaries();
+        List<Employee> emp=dep.salaries();
         double sum=0;
         for(int i=0;i<emp.size();i++){
-            sum=sum+emp.get(i).returnSalary(); //Aqui vamos creando la suma de todos los salarios
+            sum=sum+emp.get(i).getSalary(); //Aqui vamos creando la suma de todos los salarios
         }
         return sum;
     }
 
     @Override
-    public double Salaries() { //Devuelve el salario de toda la empresa
-        ArrayList<Department> dep= new ArrayList<>(departments.values());
-        ArrayList<Employee> emp=new ArrayList<>();
-        ArrayList<Employee> emp1;
+    public double salaries() { //Devuelve el salario de toda la empresa
+        List<Department> dep= new ArrayList<>(departments.values());
+        double suma= 0;
         for(int i=0;i<dep.size();i++){
-            emp1=dep.get(i).salaries(); //Calcula el salario de cada empleados por departamento y lo mete en emp1
-            emp.addAll(emp1);//Metemos los valores de emp1 en emp
+            suma=dep.get(i).salaries2()+suma; //Calcula el salario de cada departamento
         }
-        double sum=0;
-        for(int i=0;i<emp.size();i++){
-            sum=sum+emp.get(i).returnSalary(); //Creamos la suma de salarios de toda la empresa
-        }
-        return sum;
+        return suma;
     }
     }
 

@@ -1,6 +1,6 @@
 package proyecto;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -25,21 +25,21 @@ public class Main {
         man.addSale("110R",1,1000);//Añadir venta a Yisas
         man.addSale("300K",1,5000);//Es la primera venta y por eso ponemos el 1 para ser mas amigable
 
-        ArrayList<Department> dep = man.returnDepartments();
+        List<Department> dep = man.returnDepartments();
         for (int i = 0; i<dep.size();i++){  //Imprimir los tres departamentos
             System.out.println(dep.get(i).name);
         }
-        ArrayList<Employee> emp = man.EmployeeByDepartment("IT");
+        List<Employee> emp = man.employeeByDepartment("IT");
         for (int i = 0; i<emp.size();i++){ //Imprimir los empleados del departamento
             System.out.println(emp.get(i).name);
         }
 
-        ArrayList<Employee>empl = man.EmployeeBySalary();
+        List<Employee>empl = man.employeeBySalary();
         for (int i = 0; i<empl.size();i++){ //Imprimir los empleados
             System.out.println(empl.get(i).name);
         }
 
-        double salaries = man.Salaries();
+        double salaries = man.salaries();
         System.out.println(salaries);
 
 

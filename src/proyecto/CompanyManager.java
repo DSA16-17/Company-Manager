@@ -1,19 +1,17 @@
 package proyecto;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public interface CompanyManager {
     void addDepartment(String name,String description);
     void addEmployee(String DNI, String name,double salary,String Department);
     void addSalesMan(String DNI,String name, double salary,String Department);
     void addDirector(String DNI,String name, double salary,String Department);
-    ArrayList<Department> returnDepartments();
-    ArrayList<Employee> EmployeeBySalary();
-    ArrayList<Employee> EmployeeByDepartment(String name);
+    List<Department> returnDepartments();
+    List<Employee> employeeBySalary();
+    List<Employee> employeeByDepartment(String name);
     void addSale(String DNI,int sale,double amount);
-    double Salaries(String Department);
-    double Salaries();
+    double salaries(String Department);
+    double salaries();
 
 }
