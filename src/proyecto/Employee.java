@@ -7,6 +7,7 @@ public class Employee {
     public String name;
     public double salary;
     public int category;
+    public double finalsalary;
     public String department;
     ArrayList<Sales> empsales;
 

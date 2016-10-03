@@ -36,8 +36,8 @@ public class Manager implements CompanyManager {
         employees.put(DNI,emp);
     }
     @Override
-    public ArrayList<Department> returnDepartments() { //Devolver una lista con todos los departamentos
-        ArrayList<Department> Departmens =new ArrayList<Department>(departments.values());
+    public List<Department> returnDepartments() { //Devolver una lista con todos los departamentos
+        List<Department> Departmens =new ArrayList<Department>(departments.values());
         return  Departmens;
     }
 
@@ -48,13 +48,13 @@ public class Manager implements CompanyManager {
 
         for(int i=0;i<dep.size();i++){
             List<Employee> emp1;
-            emp1=dep.get(i).salaries(); //Calcula el salario de cada persona del departamento y lo mete en una lista de empleados
+            emp1=dep.get(i).calcsalaries(); //Calcula el salario de cada persona del departamento y lo mete en una lista de empleados
             emp.addAll(emp1); //Mete la lista de empleados anterior en una lista mas grande donde estaran todos los empleados
         }
         Collections.sort(emp, new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
-                return new Double(o2.getSalary()).compareTo(new Double(o1.getSalary()));
+                return new Double(o2.finalsalary).compareTo(new Double(o1.finalsalary));
             }
         });
         return emp;

@@ -37,6 +37,37 @@ public class Department {
             }
         }
     }
+    public ArrayList<Employee> calcsalaries(){
+        Employee emp;
+        ArrayList<Employee> employ = new ArrayList<Employee>();
+        int dire=0;//Posicion del director
+        double sum=0;
+
+        for (int i=0;i<employees.size();i++){
+            emp=employees.get(i);
+            emp.finalsalary=0;
+            double salary=emp.returnSalary(sum);
+            if(emp.category==0){//Director
+                dire=i;
+                sum=sum-salary;
+            }
+            sum=sum+salary;
+            emp.finalsalary=salary;
+            employ.add(emp);
+        }
+        emp=employ.get(dire);
+        employ.remove(dire);
+        double salary= emp.returnSalary(sum);
+        emp.finalsalary=salary;
+        employ.add(emp);
+        Collections.sort(employ, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return new Double(o2.finalsalary).compareTo(new Double(o1.finalsalary));
+            }
+        });
+        return employ;
+    }
     public ArrayList<Employee> salaries(){
         Employee emp;
         ArrayList<Employee> employ = new ArrayList<Employee>();
