@@ -42,6 +42,9 @@ public class Main {
         double salaries = man.salaries();
         System.out.println(salaries);
 
+        salaries = man.salaries("DET");
+        System.out.println(salaries);
+
 
 
     }

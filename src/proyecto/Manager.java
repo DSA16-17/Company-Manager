@@ -51,12 +51,7 @@ public class Manager implements CompanyManager {
             emp1=dep.get(i).calcsalaries(); //Calcula el salario de cada persona del departamento y lo mete en una lista de empleados
             emp.addAll(emp1); //Mete la lista de empleados anterior en una lista mas grande donde estaran todos los empleados
         }
-        Collections.sort(emp, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                return new Double(o2.finalsalary).compareTo(new Double(o1.finalsalary));
-            }
-        });
+        Collections.sort(emp, (o1, o2) -> new Double(o2.finalsalary).compareTo(new Double(o1.finalsalary)));
         return emp;
     }
 
@@ -85,10 +80,10 @@ public class Manager implements CompanyManager {
     @Override
     public double salaries(String Department){ //Devuelve la suma de los salarios de un departamento
         Department dep=departments.get(Department);
-        List<Employee> emp=dep.salaries();
+        List<Employee> emp=dep.calcsalaries();
         double sum=0;
         for(int i=0;i<emp.size();i++){
-            sum=sum+emp.get(i).getSalary(); //Aqui vamos creando la suma de todos los salarios
+            sum=sum+emp.get(i).finalsalary; //Aqui vamos creando la suma de todos los salarios
         }
         return sum;
     }
@@ -98,7 +93,7 @@ public class Manager implements CompanyManager {
         List<Department> dep= new ArrayList<>(departments.values());
         double suma= 0;
         for(int i=0;i<dep.size();i++){
-            suma=dep.get(i).salaries2()+suma; //Calcula el salario de cada departamento
+            suma=dep.get(i).totalSum()+suma; //Calcula el salario de cada departamento
         }
         return suma;
     }
